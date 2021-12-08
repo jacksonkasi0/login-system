@@ -29,7 +29,7 @@ router.post("/signup", async (req, res) => {
           html: `
           <div>
           <p><span style="font-weight:bold"> ${req.body.name}</span>,we welcome to our platform.</p>
-          <a style="background-color:yellow"color:white" href="http://127.0.0.1:3000/user/verify/${token}">Verify Email</a>
+          <a style="background-color:yellow"color:white" href="http://127.0.0.1:5000/user/verify/${token}">Verify Email</a>
           <div style="backround-color:yellow;">
           <p>Thanks and Regards</p>
           <p>from google :)</p>
