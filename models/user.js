@@ -14,22 +14,18 @@ const User = mongoose.model("users", {
   email: {
     type: String,
     required: true,
-    unique: true,
-  },
-  password: {
-    type: String,
-    required: true,
-    trim: true,
-  },
-  email: {
-    type: String,
-    required: true,
     trim: true,
     lowercase: true,
     unique: true,
     validate: [validateEmail, "is not a valid email"],
     match: email_regex,
   },
+  password: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+
   verified: {
     type: Boolean,
     default: false,
