@@ -17,7 +17,7 @@ app.use("/user", userRouter);
 connectDB();
 
 app.get("/", (req, res) => {
-  res.send("Login system is working!");
+  res.send("Login system is working! ");
 });
 
 app.listen( PORT, () => {
