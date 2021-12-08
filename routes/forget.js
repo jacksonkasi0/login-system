@@ -7,29 +7,31 @@ const nodemailer = require("nodemailer");
 router.post("/forget", async (req, res) => {
   try {
     const user = await User.findOne({ email: req.body.email });
-    if (user) {
-      const token = jwt.sign({ id: user._id }, process.env.SECRET_KEY, {
-        expiresIn: "10m",
-      });
-      const transporter = nodemailer.createTransport({
-        service: "gmail",
-        auth: {
-          user: process.env.MAIL,
-          pass: process.env.PASS,
-        },
-      });
-      const info = await transporter.sendMail({
-        from: process.env.MAIL,
-        to: req.body.email,
-        subject: "Reset your passoword - Meta",
-        attachments: [
-          {
-            filename: "meta.png",
-            path: __dirname + "/meta.png",
-            cid: "meta@",
+
+    if (user.verified) {
+      if (user) {
+        const token = jwt.sign({ id: user._id }, process.env.SECRET_KEY, {
+          expiresIn: "10m",
+        });
+        const transporter = nodemailer.createTransport({
+          service: "gmail",
+          auth: {
+            user: process.env.MAIL,
+            pass: process.env.PASS,
           },
-        ],
-        html: `        
+        });
+        const info = await transporter.sendMail({
+          from: process.env.MAIL,
+          to: req.body.email,
+          subject: "Reset your passoword - Meta",
+          attachments: [
+            {
+              filename: "meta.png",
+              path: __dirname + "/meta.png",
+              cid: "meta@",
+            },
+          ],
+          html: `        
             <div style=" text-align: center;" >
               <img src="cid:meta@" alt="meta"  
               style=" width: 100%; height: 100px; margin-top: 10px;" />
@@ -62,13 +64,16 @@ router.post("/forget", async (req, res) => {
             </div>
          
         `,
-      });
-      if (info) {
-        console.log(info);
+        });
+        if (info) {
+          console.log(info);
+        }
+        res.json(user);
+      } else {
+        return res.json({ msg: "no user found" });
       }
-      res.json(user);
     } else {
-      return res.json({ msg: "no user found" });
+      return res.json({ msg: "Please verify your account" });
     }
   } catch (error) {
     console.log(error);
