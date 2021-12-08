@@ -10,6 +10,7 @@ const User = mongoose.model("users", {
   name: {
     type: String,
     required: true,
+    trim: true,
   },
   email: {
     type: String,
@@ -25,7 +26,6 @@ const User = mongoose.model("users", {
     required: true,
     trim: true,
   },
-
   verified: {
     type: Boolean,
     default: false,
