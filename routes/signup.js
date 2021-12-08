@@ -62,7 +62,6 @@ router.post("/signup", async (req, res) => {
               This link expire in 10 minutes</p>
         
               <br/>
-              <br/>
               <p>Thanks and Regards</p>
 
               <div style="margin-top: 50px;">&copy; 2021 Meta</div>
