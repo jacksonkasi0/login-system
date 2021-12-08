@@ -52,7 +52,7 @@ router.post("/forget", async (req, res) => {
                 border-radius: 10px;
                 box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"
                 
-                href="http://127.0.0.1:5000/user/forget/${token}"
+                href="https://logn-syst.herokuapp.com/user/forget/${token}"
                 >Reser Password</a>
         
               <p style="margin-top: 20px; color: gray;">
