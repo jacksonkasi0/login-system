@@ -43,7 +43,7 @@ router.post("/forget", async (req, res) => {
                ${user.name}</span>,confirm to reset your password.
                </p>
 
-              <br />
+              <br /> 
         
               <a
                 style=" color:white !important;

@@ -4,8 +4,9 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const nodemailer = require("nodemailer");
 
-
 router.post("/signup", async (req, res) => {
+  const user = await User.findOne({ email: req.body.email });
+  if (!user) {
     bcrypt.genSalt(10, (err, salt) => {
       bcrypt.hash(req.body.password, salt).then(async (hash) => {
         const user = new User({
@@ -14,7 +15,9 @@ router.post("/signup", async (req, res) => {
           password: hash,
         });
         const result = await user.save();
-        const token = jwt.sign({ id: user._id }, process.env.SECRET_KEY,{expiresIn:"10m"});
+        const token = jwt.sign({ id: user._id }, process.env.SECRET_KEY, {
+          expiresIn: "10m",
+        });
         const transporter = nodemailer.createTransport({
           service: "gmail",
           auth: {
@@ -70,10 +73,13 @@ router.post("/signup", async (req, res) => {
         if (info) {
           console.log(info);
         }
-        res.json(result);
+        return res.json(result);
       });
     });
+  }
+  return res.json({
+    msg: "This user is already here! Go to the login page. Otherwise try another email.",
   });
-  
+});
 
 module.exports = router;
