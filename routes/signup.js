@@ -138,7 +138,7 @@ router.post("/verify", async (req, res) => {
         
               <p style="margin-top: 20px; color: gray;">
               This link expire in 10 minutes</p>
-        
+         
               <p>Thanks and Regards</p>
 
               <div style="margin-top: 50px;">&copy; 2021 Meta</div>
