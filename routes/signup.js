@@ -77,9 +77,16 @@ router.post("/signup", async (req, res) => {
       });
     });
   }
-  return res.json({
-    msg: "This user is already here! Go to the login page. Otherwise try another email.",
-  });
+  else if (!user.verified) {
+    return res.json({
+      msg: "This user is already try to Signup. Please verify your email.",
+    });
+  }
+  else {
+    return res.json({
+      msg: "This user is already here! Go to the login page. Otherwise try another email.",
+    });
+  }
 });
 
 module.exports = router;
