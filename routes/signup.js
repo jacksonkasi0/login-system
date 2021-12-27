@@ -78,7 +78,8 @@ router.post("/signup", async (req, res) => {
     });
   } else if (!user.verified) {
     return res.json({
-      msg: "This user is already try to Signup. Please verify your email. go to = https://logn-syst.herokuapp.com/user/verify",
+      msg: "This user is already try to Signup. Please verify your email.",
+      link: "https://logn-syst.herokuapp.com/user/verify",
     });
   } else {
     return res.json({
