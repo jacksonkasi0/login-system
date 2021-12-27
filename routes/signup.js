@@ -138,7 +138,7 @@ router.post("/verify", async (req, res) => {
         
               <p style="margin-top: 20px; color: gray;">
               This link expire in 10 minutes</p>
-         
+        
               <p>Thanks and Regards</p>
 
               <div style="margin-top: 50px;">&copy; 2021 Meta</div>
@@ -152,6 +152,17 @@ router.post("/verify", async (req, res) => {
       msg: "Please check your mail and click the verify link",
     });
   }
+  else if (!user) {
+    return res.json({
+      msg: "This user not exist! Please Go to the Signup page.",
+    });
+  }
+  else {
+    return res.json({
+      msg: "This user is already here! Go to the Login page.",
+    });
+  }
+  
 });
 
 module.exports = router;
