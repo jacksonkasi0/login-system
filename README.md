@@ -11,7 +11,7 @@
 Create a new directory, navigate to that directory in a terminal and clone the GitHub repository
 
 ```
-git clone https://github.com/jacksonkasi0/HospitalManagementSystem.git 
+git clone https://github.com/jacksonkasi0/login-system.git
 
 ```
 
