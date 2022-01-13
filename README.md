@@ -30,4 +30,4 @@ node app.js
 ---
 
 ## Recouces 
-+ [Dev post](https://dev.to/jacksonkasi/hospital-management-system-using-mongodb-with-nodejs-and-ejs-5gek)
++ [Dev post](https://dev.to/jacksonkasi/complete-login-signup-system-mongodb-atlas-2b8l)
