@@ -18,7 +18,7 @@ git clone https://github.com/jacksonkasi0/login-system.git
 Change directory to the pattern directory:
 
 ```bash
-cd HospitalManagementSystem 
+cd login-system 
 ```
 
 From the command line, you should Enter:
